@@ -2,7 +2,7 @@ import express from 'express';
 import cors from "cors";
 import tarea from '../src/routes/tarea.routes.js'
 import usuario from '../src/routes/usuario.routes.js'
-import { PUERTO } from './config.js';
+import { PUERTO, URLDB } from './config.js';
 import db from './pg.js';
 
 
@@ -13,7 +13,7 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(cors());
 
 app.get("/", (req, res) => {
-    console.log('ok');
+    console.log(URLDB);
     db.one(`select * from usuario`).then(data=>{
         res.json({data})
     }).catch(error=>{
