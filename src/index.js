@@ -12,15 +12,6 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 app.use(cors());
 
-app.get("/", (req, res) => {
-    console.log(URLDB);
-    db.one(`select * from usuario`).then(data=>{
-        res.json({data})
-    }).catch(error=>{
-        res.json({error})
-    })
-})
-
 app.use(usuario)
 app.use(tarea)
 
