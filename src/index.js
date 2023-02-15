@@ -2,7 +2,7 @@ import express from 'express';
 import cors from "cors";
 import tarea from '../src/routes/tarea.routes.js'
 import usuario from '../src/routes/usuario.routes.js'
-import { PORT } from './config.js';
+import { PUERTO } from './config.js';
 import db from './pg.js';
 
 
@@ -13,6 +13,7 @@ app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(cors());
 
 app.get("/", (req, res) => {
+    console.log('ok');
     db.one(`select * from usuario`).then(data=>{
         res.json({data})
     }).catch(error=>{
@@ -23,5 +24,5 @@ app.get("/", (req, res) => {
 app.use(usuario)
 app.use(tarea)
 
-app.listen(PORT);
-console.log('Server on port', PORT)
+app.listen(PUERTO);
+console.log('puerto on port', PUERTO)
