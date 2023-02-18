@@ -65,7 +65,7 @@ export const obtenerTareas = async (req, res) => {
 export const actualizarTarea = async (req, res) => {
   console.log(req.body);
   db.query(
-    `update tarea set estado='F', ffinalizacion=CURRENT_DATE where idtarea='${req.body.idtarea}' RETURNING idtarea`
+    `update tarea set estado='F', ffinalizacion=now() where idtarea='${req.body.idtarea}' RETURNING idtarea`
   )
     .then((respuesta) => {
       respuesta.length > 0
