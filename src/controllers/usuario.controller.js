@@ -11,9 +11,9 @@ export const traeUsuario = async (req, res) => {
     .then((data)=>{
         let respuesta = [data];
         console.log("tamaño del arreglo de sesiones", respuesta.length);
-        respuesta.length===1 ? res.json({auth:true, id:respuesta[0], mensaje:'Se ha logueado'}) : res.json({auth:false, id:null, mensaje:'No se ha podido loguear'});
+        respuesta.length===1 && res.json({auth:true, id:respuesta[0], mensaje:`Bienvenida/o ${b.nusuario}`})  ;
     })
     .catch((error)=>{
-        res.json({auth:false, mensaje:"Ha ocurrido un error", error, id:null})
+        res.json({auth:false, id:null, mensaje:'No se ha podido loguear', error})
     })
 }
